@@ -10,10 +10,10 @@ public class MockitoTest {
     
     @Test
     public void mockitoNameChengeTest(){
-        Person person = new Person("Ana", 2000, "Student");
+        Person personMock = Mockito.mock(Person.class);
+        personMock.setName("Ana");
         //Expected to throw an exception due to version of mockito core, which the method changeMockitoCore() will change
-        Person spy = Mockito.spy(person);
-        doReturn("Vitoria").when(spy).getName();
-        Assert.assertEquals("Vitoria", spy.getName());
+        doReturn("Vitoria").when(personMock).getName();
+        Assert.assertEquals("Vitoria", personMock.getName());
     }
 }
