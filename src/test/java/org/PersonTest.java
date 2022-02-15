@@ -6,6 +6,14 @@ import org.junit.Test;
 public class PersonTest {
 
   @Test
+  public void waitTest() throws InterruptedException{
+    this.wait(60000);
+    Person person = new Person("LeBron James", 1984, "Athlete");
+    Assert.assertEquals("LeBron James", person.getName());
+    Assert.assertFalse(person.isTeenager());
+  }
+
+  @Test
   public void expectPassedTest(){
     Person person = new Person("Ana", 2000, "Student");
     Assert.assertEquals("Ana", person.getName());
