@@ -7,7 +7,7 @@ public class PersonTest {
 
   @Test
   public void waitTest() throws InterruptedException{
-    this.wait(60000);
+    Thread.sleep(60000);
     Person person = new Person("LeBron James", 1984, "Athlete");
     Assert.assertEquals("LeBron James", person.getName());
     Assert.assertFalse(person.isTeenager());
