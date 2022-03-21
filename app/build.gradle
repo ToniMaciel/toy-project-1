@@ -1,0 +1,25 @@
+plugins {
+    id 'application'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.apache.commons:commons-lang3:3.12.0' 
+    testImplementation 'junit:junit:4.13.1'
+}
+
+tasks.named('test') {
+    useJUnit()
+}
+
+task fatJar(type: Jar) {
+    baseName = project.name + '-all'
+    from { (configurations.runtimeClasspath).collect { it.isDirectory() ? it : zipTree(it) } }
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    from { (configurations.testRuntimeClasspath).collect { it.isDirectory() ? it : zipTree(it) } }
+    from sourceSets.test.output
+    with jar
+}
